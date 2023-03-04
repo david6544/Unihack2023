@@ -1,12 +1,15 @@
 class Card {
     constructor ({
-        wordInformation
+        wordInformation,
+        isErase
     }) {
+        this.isErase = isErase;
         this.wordInformation = wordInformation;
         this.init();
     }
 
     // Private Properties
+    startPoint; offsetX; offsetY;
 
     // Method to generate a new card
     init = () => {
@@ -33,18 +36,80 @@ class Card {
         reading.innerHTML = this.wordInformation.phonetic;
         const example_detail = document.createElement('p');
         example_detail.classList.add('text-indent');
-        console.log(this.wordInformation.meanings[0].definitions);
-        example_detail.innerHTML = this.wordInformation.meanings[0].definitions[0].example;
+        example_detail.innerHTML = this.wordInformation.example;
         const origin_detail = document.createElement('p');
         origin_detail.classList.add('text-indent');
         origin_detail.innerHTML = this.wordInformation.origin;
         
-
         // Append
         wordInfo.append(example, example_detail, document.createElement('br'),
         origin, origin_detail, document.createElement('br'));
         card.append(header, reading, document.createElement('br'), 
         wordInfo);
         this.element = card;
+        this.listenToMouseEvents();
+    }
+    
+    // Mouse down
+    listenToMouseEvents = () => {
+        this.element.addEventListener('mousedown', (e) => {
+        const { clientX, clientY } = e;
+        this.startPoint = { x: clientX, y: clientY }
+        document.addEventListener('mousemove', this.handleMouseMove);
+        this.element.style.transition = 'transform 0s';
+        });
+    
+        document.addEventListener('mouseup', this.handleMoveUp);
+    
+        // Stop card dragging
+        this.element.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        });
+    }
+    
+    // Dragging card
+    handleMove = (x, y) => {
+        this.offsetX = x - this.startPoint.x;
+        this.offsetY = y - this.startPoint.y;
+        const rotate = this.offsetX * 0.1;
+        this.element.style.transform = `translate(${this.offsetX}px, ${this.offsetY}px) rotate(${rotate}deg)`;
+        // clear card when users drag too far
+        if (Math.abs(this.offsetX) > this.element.clientWidth * 1.2) {
+        this.clearCard(this.offsetX > 0 ? 1 : -1);
+        }
+    }
+    
+    // handling mouse movement
+    handleMouseMove = (e) => {
+        e.preventDefault();
+        if (!this.startPoint) return;
+        const { clientX, clientY } = e;
+        this.handleMove(clientX, clientY);
+    }
+    
+    // When mouse clicked up
+    handleMoveUp = () => {
+        this.startPoint = null;
+        document.removeEventListener('mousemove', this.handleMouseMove);
+        this.element.style.transform = '';
+    }
+    
+    // Functions to erase cards
+    clearCard = (direction) => {
+        this.startPoint = null;
+        document.removeEventListener('mouseup', this.handleMoveUp);
+        document.removeEventListener('mousemove', this.handleMouseMove);
+        document.removeEventListener('touchend', this.handleTouchEnd);
+        document.removeEventListener('touchmove', this.handleTouchMove);
+        this.element.style.transition = 'transform 1s';
+        this.element.style.transform = `translate(${direction * window.innerWidth}px, ${this.offsetY}px) rotate(${90 * direction}deg)`;
+        this.element.classList.add('dismissing');
+        setTimeout(() => {
+        this.element.remove();
+        }, 1000);
+
+        if(typeof this.isErase === 'function') {
+            this.isErase();
+        }
     }
 }

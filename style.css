@@ -19,6 +19,7 @@ body {
     aspect-ratio: 2/3;
     perspective: 1000px;
     perspective-origin: center 50%;
+    transform-style: preserve-3d;
     position: relative;
 }
 
@@ -31,7 +32,7 @@ body {
     overflow: hidden;
     background-color: #F8F5E3;
     transform: translateZ(calc(-1px * var(--i))) 
-    translateY(calc(-5px * var(--i))) translateX(calc(-3px * var(--i)));
+    translateY(calc(7px * var(--i))) translateX(calc(2px * var(--i)));
     filter: drop-shadow(2px 2px 20px rgba(0,0,0,0.3));
 }
 
