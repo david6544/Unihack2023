@@ -17,4 +17,4 @@ Socia Media API - Leo - Status: 🟩Completed <br />
 History Session - Leo - Status: 🟩Completed <br />
 
 Data Handling: <br />
-Transposing Data - David - Status: 🟨On-going <br />
+Transposing Data - David - Status: 🟩Completed <br />
