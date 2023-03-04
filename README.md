@@ -5,8 +5,8 @@ Current Progress:
 
 
 Front-end:
-Home Page - __
-404 Card Page - __
+Home Page - <br />
+404 Card Page - <br />
 Game Page - __
  Animations - __
  
