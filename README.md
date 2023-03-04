@@ -5,16 +5,16 @@ Current Progress:
 
 
 Front-end:
-Home Page - _
-404 Card Page - _
-Game Page - _
- Animations - _
+Home Page - __
+404 Card Page - __
+Game Page - __
+ Animations - __
  
 
 Back-End JavaScript:
 
-Socia Media API - Leo - Status: Completed _
-History Session - Leo - Status: Completed _
+Socia Media API - Leo - Status: Completed __
+History Session - Leo - Status: Completed __
 
 Data Handling:
-Transposing Data - David - Status: On-going _
+Transposing Data - David - Status: On-going __
