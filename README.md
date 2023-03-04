@@ -8,7 +8,7 @@ Front-end:
 Home Page - 
 404 Card Page - 
 Game Page - 
-  Animations - 
+Animations - 
  
 
 Back-End JavaScript:
