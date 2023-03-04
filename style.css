@@ -41,7 +41,7 @@ body {
 }
 
 .text-indent {
-    text-indent: 10px;
+    margin-left: 10px;
 }
 
 h1 {
