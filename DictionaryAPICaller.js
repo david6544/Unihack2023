@@ -23,15 +23,23 @@ function getCardData()
 
         return 0;
         })
+    .catch(fail => {
+        console.log("FAIL BAD UMU");
+        return cardData;
+    })
     .then (placeholder => {
         fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + incorrect)
         .then(response => {
           return response.json();
         })
+        .catch(fail => {
+            console.log("FAIL BAD UMU");
+            return cardData;
+        })
         .then(entry => {
             cardData.decoy_definition = entry[0].meanings[0].definitions[0].definition
+            return cardData;
         })   
     })
 
-    return cardData;
 }
