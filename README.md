@@ -13,8 +13,8 @@ Animations -
 
 Back-End JavaScript:
 
-Socia Media API - Leo - Status: Completed
-History Session - Leo - Status: Completed
+Socia Media API - Leo - Status: Completed \n
+History Session - Leo - Status: Completed \n
 
 Data Handling:
 Transposing Data - David - Status: On-going
