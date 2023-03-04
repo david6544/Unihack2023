@@ -23,27 +23,54 @@ class Card {
         const wordInfo = document.createElement('div');
         wordInfo.classList.add('word-information');
 
-        // Constant words
-        const example = document.createElement('p');
-        example.innerHTML = 'Example:';
-        const origin = document.createElement('p');
-        origin.innerHTML = 'Origins:';
+        if(this.wordInformation.example != undefined) {
+            const example = document.createElement('p');
+            example.innerHTML = 'Example:';
+            const example_detail = document.createElement('p');
+            example_detail.classList.add('text-indent');
+            example_detail.innerHTML = this.wordInformation.example;
+            wordInfo.append(example, example_detail, document.createElement('br'));
+        }   
+
+        if(this.wordInformation.origin != undefined) {
+            const origin = document.createElement('p');
+            origin.innerHTML = 'Origin:';
+            const origin_detail = document.createElement('p');
+            origin_detail.classList.add('text-indent');
+            origin_detail.innerHTML = this.wordInformation.origin;
+            wordInfo.append(origin, origin_detail, document.createElement('br'));
+        }  
+
+        if(this.wordInformation.synonym != "NULL") {
+            const synonym = document.createElement('p');
+            synonym.innerHTML = 'Synonym:';
+            const synonym_detail = document.createElement('p');
+            synonym_detail.classList.add('text-indent');
+            synonym_detail.innerHTML = this.wordInformation.synonym;
+            wordInfo.append(synonym, synonym_detail, document.createElement('br'));
+        }  
+
+        if(this.wordInformation.antonym != "NULL") {
+            const antonym = document.createElement('p');
+            antonym.innerHTML = 'Antonym:';
+            const antonym_detail = document.createElement('p');
+            antonym_detail.classList.add('text-indent');
+            antonym_detail.innerHTML = this.wordInformation.antonym;
+            wordInfo.append(antonym, antonym_detail, document.createElement('br'));
+        }  
+
         const synonyms = document.createElement('p');
         synonyms.innerHTML = 'Synonyms:';
 
         // JSON information words
         const reading = document.createElement('p');
         reading.innerHTML = this.wordInformation.phonetic;
-        const example_detail = document.createElement('p');
-        example_detail.classList.add('text-indent');
-        example_detail.innerHTML = this.wordInformation.example;
+    
         const origin_detail = document.createElement('p');
         origin_detail.classList.add('text-indent');
         origin_detail.innerHTML = this.wordInformation.origin;
         
         // Append
-        wordInfo.append(example, example_detail, document.createElement('br'),
-        origin, origin_detail, document.createElement('br'));
         card.append(header, reading, document.createElement('br'), 
         wordInfo);
         this.element = card;

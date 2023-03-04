@@ -52,6 +52,7 @@ function getCardData() {
 
         //set up the word
         datas = cardData;
+        console.log(datas);
         processData();
       }
     }
