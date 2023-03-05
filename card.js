@@ -1,7 +1,7 @@
 class Card {
     constructor ({
         wordInformation,
-        isErase
+        isErase,
     }) {
         this.isErase = isErase;
         this.wordInformation = wordInformation;
@@ -13,6 +13,17 @@ class Card {
 
     // Method to generate a new card
     init = () => {
+        var rand = Math.floor(Math.random() * 2);
+        
+        const left_card = document.querySelector('#text-box-left');
+        const right_card = document.querySelector('#text-box-right');
+        if(rand === 1) {
+            left_card.innerHTML = this.wordInformation.definition;
+            right_card.innerHTML = this.wordInformation.decoy_definition;
+        } else {
+            right_card.innerHTML = this.wordInformation.definition;
+            left_card.innerHTML = this.wordInformation.decoy_definition;
+        }
         const card = document.createElement('div');
         card.classList.add('card');
 
