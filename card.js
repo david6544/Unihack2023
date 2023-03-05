@@ -9,7 +9,7 @@ class Card {
     }
 
     // Private Properties
-    startPoint; offsetX; offsetY;
+    startPoint; offsetX; offsetY; currentCorrectDefinitionDirection;
 
     // Method to generate a new card
     init = () => {
@@ -20,9 +20,11 @@ class Card {
         if(rand === 1) {
             left_card.innerHTML = this.wordInformation.definition;
             right_card.innerHTML = this.wordInformation.decoy_definition;
+            this.currentCorrectDefinitionDirection = 1;
         } else {
             right_card.innerHTML = this.wordInformation.definition;
             left_card.innerHTML = this.wordInformation.decoy_definition;
+            this.currentCorrectDefinitionDirection = -1;
         }
         const card = document.createElement('div');
         card.classList.add('card');
@@ -148,6 +150,20 @@ class Card {
 
         if(typeof this.isErase === 'function') {
             this.isErase();
+        }
+
+        if(direction != this.currentCorrectDefinitionDirection) { // Trigger swiping to the left
+            console.log("Correct");
+            document.querySelector('#streak-content').innerHTML++;
+        } else {
+            console.log("Incorrect");
+            document.querySelector('#streak-content').innerHTML = 0;
+            document.querySelector('#cross' + document.querySelector('#life').innerHTML).remove();
+            document.querySelector('#life').innerHTML--;
+            console.log(document.querySelector('#life').innerHTML);
+            if(document.querySelector('#life').innerHTML === '0') {
+                console.log('Game Over');
+            }
         }
     }
 }

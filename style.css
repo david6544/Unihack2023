@@ -62,6 +62,7 @@ h1 {
     align-items: center;
     padding: 30px;
     font-size: 20px;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.3));
 }
 
 .drop-box-right {
@@ -77,4 +78,37 @@ h1 {
     align-items: center;
     padding: 30px;
     font-size: 20px;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.3));
 }
+
+#scoreboard {
+    background-color: #F8F5E1;
+    border-radius: 20px;
+    position: absolute;
+    height: 10%;
+    width: 20%;
+    z-index: 2;
+    bottom: 88%;
+    left: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.3));
+    font-size: 30px;
+}
+
+#life {
+    visibility: hidden;
+}
+
+#live-crosses {
+    position: absolute;
+    height: 10%;
+    width: 20%;
+    z-index: 2;
+    bottom: 88%;
+    right: 78%;
+    font-size: 50px;
+    color: red;
+}
+
