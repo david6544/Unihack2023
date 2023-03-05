@@ -6,8 +6,8 @@ Current Progress:
 
 Front-end: <br />
 Home Page - User - Status: 🟥<br />
-404 Card Page - User - Status: 🟥<br />
-Game Page - User - Status: 🟥<br />
+Card Page - Peter - Status: 🟩Completed <br />
+Game Page - Peter - Status: 🟩Completed<br />
 &nbsp; Animations - User - Status: 🟥<br />
  
 
